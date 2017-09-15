@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Orca蓝牙</string>
+    <string name="BLE_list">可用蓝牙列表</string>
+</resources>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.vip.bt_client.MainActivity">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="Orca蓝牙"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+
+    <LinearLayout
+        android:id="@+id/angle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/pitchAngText"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="PitchAng:"
+            android:textColor="#fff"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/rollAngText"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="RollAng:"
+            android:textColor="#fff"
+            android:textSize="20sp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/angle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/yawAngText"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="YawAng:"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/altText"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alttitude:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/receiver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/second"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="14dp"
+
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/distanceText"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Distance:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/voltageText"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Voltage:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/roll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/angle"
+        android:layout_below="@+id/receiver"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+
+        <RadioGroup
+            android:id="@+id/rp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="P"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+
+            <RadioButton
+                android:id="@+id/i"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="I"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+
+            <RadioButton
+                android:id="@+id/d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="D"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/horizomtalName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/roll"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ROLL"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/yaw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/angle"
+        android:layout_below="@+id/horizomtalName"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:text="外环:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/ri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxWidth="35dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/rd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxWidth="35dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/yp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxWidth="35dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/pitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/angle"
+        android:layout_below="@+id/yaw"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:text="内环:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/yi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxWidth="35dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+        <EditText
+            android:id="@+id/yd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxWidth="35dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+        <EditText
+            android:id="@+id/pp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxWidth="35dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pitch"
+        android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onConnect"
+            android:text="连接"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onSend"
+            android:text="发送"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
