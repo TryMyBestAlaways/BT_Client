@@ -113,7 +113,8 @@
             android:textStyle="bold"
             android:textSize="20sp"/>
     </LinearLayout>
-
+<!---->
+    <!--dngjksnjkgnjksfbjkasbfjs-->
 
     <LinearLayout
         android:id="@+id/roll"
