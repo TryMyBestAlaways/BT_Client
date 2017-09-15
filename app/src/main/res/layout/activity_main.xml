@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/activity_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/bg2"
                 tools:context="com.example.vip.bt_client.MainActivity">
 
     <ImageView
@@ -17,287 +19,357 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
         android:text="Orca蓝牙"
+        android:textColor="#fff"
         android:textSize="25sp"
         android:textStyle="bold"/>
 
-
-    <LinearLayout
-        android:id="@+id/angle"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal">
+        android:layout_margin="16dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="#879e9191"
+        app:cardCornerRadius="6dp">
 
-        <TextView
-            android:id="@+id/pitchAngText"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="PitchAng:"
-            android:textColor="#fff"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/rollAngText"
-            android:layout_width="1dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="RollAng:"
-            android:textColor="#fff"
-            android:textSize="20sp"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/second"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/angle"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/yawAngText"
-            android:layout_width="1dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="YawAng:"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/altText"
-            android:layout_width="1dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Alttitude:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/receiver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/second"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="14dp"
-
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:id="@+id/distanceText"
-            android:layout_width="1dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Distance:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/voltageText"
-            android:layout_width="1dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Voltage:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-    </LinearLayout>
-<!---->
-    <!--dngjksnjkgnjksfbjkasbfjs-->
-
-    <LinearLayout
-        android:id="@+id/roll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/angle"
-        android:layout_below="@+id/receiver"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
-
-
-        <RadioGroup
-            android:id="@+id/rp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="horizontal">
+            android:layout_margin="11dp"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/p"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/angle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="P"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/i"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/pitchAngText"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PitchAng:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/rollAngText"
+                    android:layout_width="1dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RollAng:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/second"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="I"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/d"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/yawAngText"
+                    android:layout_width="1dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="YawAng:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/altText"
+                    android:layout_width="1dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Alttitude:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/receiver"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="D"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
 
-        </RadioGroup>
+                <TextView
+                    android:id="@+id/distanceText"
+                    android:layout_width="1dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Distance:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/voltageText"
+                    android:layout_width="1dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Voltage:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    <LinearLayout
-        android:id="@+id/horizomtalName"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/cardView1"
+        android:layout_margin="16dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="#879e9191"
+        app:cardCornerRadius="6dp">
 
-        android:layout_below="@+id/roll"
-        android:layout_margin="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ROLL"
-            android:textSize="25sp"/>
-    </LinearLayout>
+            android:layout_margin="11dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/roll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardView1">
 
 
-    <LinearLayout
-        android:id="@+id/yaw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/angle"
-        android:layout_below="@+id/horizomtalName"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
+                <RadioGroup
+                    android:id="@+id/rp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            android:text="外环:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+                    <RadioButton
+                        android:id="@+id/p"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="P"
+                        android:textColor="#fff"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/ri"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxWidth="35dp"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+                    <RadioButton
+                        android:id="@+id/i"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="I"
+                        android:textColor="#fff"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/rd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxWidth="35dp"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-
-        <EditText
-            android:id="@+id/yp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxWidth="35dp"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+                    <RadioButton
+                        android:id="@+id/d"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="D"
+                        android:textColor="#fff"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
 
 
-    </LinearLayout>
+                </RadioGroup>
 
 
-    <LinearLayout
-        android:id="@+id/pitch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/angle"
-        android:layout_below="@+id/yaw"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            android:text="内环:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            <LinearLayout
+                android:id="@+id/horizomtalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/roll"
+                android:layout_marginTop="10dp">
 
-        <EditText
-            android:id="@+id/yi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxWidth="35dp"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="ROLL"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#fff"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/yd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxWidth="35dp"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="YAW"
+                    android:textColor="#fff"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
 
-
-        <EditText
-            android:id="@+id/pp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxWidth="35dp"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="PTCH"
+                    android:textColor="#fff"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
 
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/yaw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizomtalName"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:text="外环:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/ar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxWidth="35dp"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/ay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxWidth="35dp"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/ap"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxWidth="35dp"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/yaw"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:text="内环:"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/vr"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxWidth="35dp"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+
+                <EditText
+                    android:id="@+id/vy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxWidth="35dp"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+
+                <EditText
+                    android:id="@+id/vp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxWidth="35dp"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pitch"
+        android:layout_below="@+id/cardView2"
         android:layout_margin="20dp">
 
         <Button

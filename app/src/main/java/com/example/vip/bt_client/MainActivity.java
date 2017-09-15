@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.util.Log;
@@ -37,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private Button connect, send;
     private TextView pitchAngText, rollAngText, yawAngText, altText,
             distanceText, voltageText;
-    private EditText roolI, roolD, yawP, yawI, yawD, pitchP, pitchI, pitchD,
-            altitudeP, altitudeI, altitudeD, info;
-    private RadioGroup roolP;
+    private EditText angleR, angleY, angleP, velocityR, velocityY, velocityP;
+
+    private RadioGroup radioGroup;
     private Handler handler;
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
@@ -54,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
     private boolean isSend;
     private BluetoothLeService mBluetoothLeService;
     private ImageView bg;
+
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private String lastSelect;
+
+
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder service) {
@@ -72,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             mBluetoothLeService = null;
         }
     };
-
 
     Runnable runnable = new Runnable() {
         @Override
@@ -160,42 +167,120 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler();
         connect = (Button) findViewById(R.id.connect);
         send = (Button) findViewById(R.id.send);
-        roolP = (RadioGroup) findViewById(R.id.rp);
-        roolI = (EditText) findViewById(R.id.ri);
-        roolD = (EditText) findViewById(R.id.rd);
-        yawP = (EditText) findViewById(R.id.yp);
-        yawI = (EditText) findViewById(R.id.yi);
-        yawD = (EditText) findViewById(R.id.yd);
-        pitchP = (EditText) findViewById(R.id.pp);
+        radioGroup = (RadioGroup) findViewById(R.id.rp);
+        angleR = (EditText) findViewById(R.id.ar);
+        angleY = (EditText) findViewById(R.id.ay);
+        angleP = (EditText) findViewById(R.id.ap);
+        velocityR = (EditText) findViewById(R.id.vr);
+        velocityY = (EditText) findViewById(R.id.vy);
+        velocityP = (EditText) findViewById(R.id.vp);
+
         pitchAngText = (TextView) findViewById(R.id.pitchAngText);
         rollAngText = (TextView) findViewById(R.id.rollAngText);
         yawAngText = (TextView) findViewById(R.id.yawAngText);
         altText = (TextView) findViewById(R.id.altText);
         voltageText = (TextView) findViewById(R.id.voltageText);
         distanceText = (TextView) findViewById(R.id.distanceText);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
 
-/*
-        Intent serviceIntent = new Intent(this, BluetoothLeService.class);
-        boolean isBind = bindService(serviceIntent, serviceConnection, BIND_AUTO_CREATE);
-        handler.postDelayed(runnable, WRITE_DATA_PERIOD);
-        roolP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bg = (ImageView) findViewById(R.id.background);
+        Glide.with(this).load(R.drawable.bg2).into(bg);
+
+        radioGroup.check(R.id.p);
+        lastSelect = "P";
+        getEditTextValue(lastSelect);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.p) {
                     rp = "P".getBytes();
+                    saveEditTextValue(lastSelect);
+                    lastSelect = "P";
+                    getEditTextValue(lastSelect);
                 } else if (checkedId == R.id.i) {
                     rp = "I".getBytes();
+                    saveEditTextValue(lastSelect);
+                    lastSelect = "I";
+                    getEditTextValue(lastSelect);
                 } else if (checkedId == R.id.d) {
                     rp = "D".getBytes();
+                    saveEditTextValue(lastSelect);
+                    lastSelect = "D";
+                    getEditTextValue(lastSelect);
                 } else {
                     rp = "0".getBytes();
                 }
                 Log.w("tag", "rp的值++++++" + rp[0]);
+
+
             }
         });
-        Log.w("tag", isBind + "已进入主程序onCreate");*/
-        bg = (ImageView) findViewById(R.id.background);
-        Glide.with(this).load(R.drawable.background).into(bg);
+
+        Intent serviceIntent = new Intent(this, BluetoothLeService.class);
+        boolean isBind = bindService(serviceIntent, serviceConnection, BIND_AUTO_CREATE);
+        handler.postDelayed(runnable, WRITE_DATA_PERIOD);
+        Log.w("tag", isBind + "已进入主程序onCreate");
+
+    }
+
+
+    private String arTag, ayTag, apTag, vrTag, vyTag, vpTag;
+
+    private boolean initTag(String type) {
+        if ("P".equals(type)) {
+            arTag = "par";
+            ayTag = "pay";
+            apTag = "pap";
+            vrTag = "pvr";
+            vyTag = "pvy";
+            vpTag = "pvp";
+        } else if ("I".equals(type)) {
+            arTag = "iar";
+            ayTag = "iay";
+            apTag = "iap";
+            vrTag = "ivr";
+            vyTag = "ivy";
+            vpTag = "ivp";
+        } else if ("D".equals(type)) {
+            arTag = "dar";
+            ayTag = "day";
+            apTag = "dap";
+            vrTag = "dvr";
+            vyTag = "dvy";
+            vpTag = "dvp";
+        } else {
+            return false;
+        }
+        Log.d("save", "init successful:" + type);
+        return true;
+    }
+
+    private void saveEditTextValue(String type) {
+        if (initTag(type)) {
+            editor.putString(arTag, angleR.getText().toString());
+            editor.putString(ayTag, angleY.getText().toString());
+            editor.putString(apTag, angleP.getText().toString());
+            editor.putString(vrTag, velocityR.getText().toString());
+            editor.putString(vyTag, velocityY.getText().toString());
+            editor.putString(vpTag, velocityP.getText().toString());
+            editor.apply();
+            Log.d("save", "save successful:" + type);
+        }
+    }
+
+    private void getEditTextValue(String type) {
+        if (initTag(type)) {
+            preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            angleR.setText(preferences.getString(arTag, ""));
+            angleY.setText(preferences.getString(ayTag, ""));
+            angleP.setText(preferences.getString(apTag, ""));
+            velocityR.setText(preferences.getString(vrTag, ""));
+            velocityY.setText(preferences.getString(vyTag, ""));
+            velocityP.setText(preferences.getString(vpTag, ""));
+            Log.d("save", "load successful:" + type);
+        }
+
     }
 
     public void onConnect(View v) {
@@ -214,12 +299,12 @@ public class MainActivity extends AppCompatActivity {
 
         LinkedList<Byte> data = new LinkedList<Byte>();
         Log.w("tag", "rp的值" + rp[0]);
-        final int ri = intFromFloatString(roolI.getText());
-        final int rd = intFromFloatString(roolD.getText());
-        final int yp = intFromFloatString(yawP.getText());
-        final int yi = intFromFloatString(yawI.getText());
-        final int yd = intFromFloatString(yawD.getText());
-        final int pp = intFromFloatString(pitchP.getText());
+        final int ri = intFromFloatString(angleR.getText());
+        final int rd = intFromFloatString(angleY.getText());
+        final int yp = intFromFloatString(angleP.getText());
+        final int yi = intFromFloatString(velocityR.getText());
+        final int yd = intFromFloatString(velocityY.getText());
+        final int pp = intFromFloatString(velocityP.getText());
 
 
         data.add((byte) ((rp[0]) & 0xff));
